@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>PoE Guild Chest Analyzer</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Load Chart.js from a CDN for convenience -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>PoE Guild Chest Activity Analyzer</h1>
+
+      <section class="file-upload-section">
+        <h2>Upload CSV File</h2>
+        <input type="file" id="csvFileInput" accept=".csv" />
+        <button id="uploadBtn">Import CSV</button>
+      </section>
+
+      <section class="filters-section">
+        <h2>Filters</h2>
+        <label for="leagueFilter">League:</label>
+        <select id="leagueFilter">
+          <option value="">All</option>
+        </select>
+
+        <label for="accountFilter">Account:</label>
+        <select id="accountFilter">
+          <option value="">All</option>
+        </select>
+
+        <label for="actionFilter">Action:</label>
+        <select id="actionFilter">
+          <option value="">All</option>
+        </select>
+      </section>
+
+      <!-- Tab navigation -->
+      <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'Preview')">Preview</button>
+        <button class="tablinks" onclick="openTab(event, 'Visualizations')">Data Visualizations</button>
+      </div>
+
+      <!-- Tab content -->
+      <div id="Preview" class="tabcontent">
+        <section id="previewSection">
+          <h3>Preview</h3>
+          <table id="previewTable">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Account</th>
+                <th>Action</th>
+                <th>Stash</th>
+                <th>Item</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Parsed data will appear here -->
+            </tbody>
+          </table>
+        </section>
+      </div>
+
+      <div id="Visualizations" class="tabcontent" style="display:none;">
+        <section class="charts-section">
+          <h2>Data Visualizations</h2>
+          <div class="chart-container">
+            <canvas id="timelineChart"></canvas>
+          </div>
+          <div class="chart-container">
+            <canvas id="barChart"></canvas>
+          </div>
+          <div class="chart-container">
+            <canvas id="pieChart"></canvas>
+          </div>
+          <div class="chart-container">
+            <canvas id="heatmapChart"></canvas>
+          </div>
+        </section>
+      </div>
+
+      <section class="export-section">
+        <button id="downloadCsvBtn">Export CSV</button>
+        <button id="downloadPngBtn">Download Chart PNG</button>
+      </section>
+    </div>
+
+    <script>
+      function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+
+      // Open the default tab
+      document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelector('.tablinks').click();
+      });
+    </script>
+
+    <script src="Poe2CSVImporter.js"></script>
+  </body>
+</html>

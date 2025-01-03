@@ -1,0 +1,133 @@
+/* Basic reset and global styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+h1, h2 {
+  margin-bottom: 10px;
+}
+
+.file-upload-section,
+.filters-section,
+.charts-section,
+.export-section {
+  background-color: #fff;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+label {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+input[type="file"] {
+  margin-bottom: 10px;
+}
+
+#uploadBtn {
+  margin-left: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+#previewTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+#previewTable th,
+#previewTable td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+/* Add specific width to the date column */
+#previewTable th:first-child,
+#previewTable td:first-child {
+  width: 150px; /* Adjust width as needed */
+}
+
+/* Center-align the column labels */
+#previewTable th {
+  text-align: center;
+}
+
+.chart-container {
+  position: relative;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.chart-container canvas {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+}
+
+.export-section button {
+  margin-right: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .chart-container {
+    min-height: 300px;
+  }
+}
+
+/* Add these styles for the tab functionality */
+.tab {
+  overflow: hidden;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+.tab button:hover {
+  background-color: #ddd;
+}
+
+.tab button.active {
+  background-color: #ccc;
+}
+
+.tabcontent {
+  display: none;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
