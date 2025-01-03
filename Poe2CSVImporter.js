@@ -22,12 +22,12 @@ window.addEventListener('load', () => {
   });
 
   // Filter dropdowns
-  const leagueFilter = document.getElementById('leagueFilter');
+  const stashFilter = document.getElementById('stashFilter');
   const accountFilter = document.getElementById('accountFilter');
   const actionFilter = document.getElementById('actionFilter');
 
   // Attach event listeners to filters
-  leagueFilter.addEventListener('change', applyFilters);
+  stashFilter.addEventListener('change', applyFilters);
   accountFilter.addEventListener('change', applyFilters);
   actionFilter.addEventListener('change', applyFilters);
 
@@ -141,25 +141,25 @@ function populatePreviewTable(data) {
 
 function populateFilterOptions(data) {
   // Remove existing options except 'All'
-  const leagueFilter = document.getElementById('leagueFilter');
+  const stashFilter = document.getElementById('stashFilter');
   const accountFilter = document.getElementById('accountFilter');
   const actionFilter = document.getElementById('actionFilter');
 
-  clearSelectOptions(leagueFilter);
+  clearSelectOptions(stashFilter);
   clearSelectOptions(accountFilter);
   clearSelectOptions(actionFilter);
 
   // Gather unique values for each field
-  const leagues = [...new Set(data.map(d => d.League))];
+  const stashes = [...new Set(data.map(d => d.Stash))];
   const accounts = [...new Set(data.map(d => d.Account))];
   const actions = [...new Set(data.map(d => d.Action))];
 
   // Populate each filter
-  leagues.forEach(league => {
+  stashes.forEach(stash => {
     const opt = document.createElement('option');
-    opt.value = league;
-    opt.textContent = league;
-    leagueFilter.appendChild(opt);
+    opt.value = stash;
+    opt.textContent = stash;
+    stashFilter.appendChild(opt);
   });
 
   accounts.forEach(account => {
@@ -184,13 +184,13 @@ function clearSelectOptions(selectElement) {
 }
 
 function applyFilters() {
-  const leagueVal = document.getElementById('leagueFilter').value;
+  const stashVal = document.getElementById('stashFilter').value;
   const accountVal = document.getElementById('accountFilter').value;
   const actionVal = document.getElementById('actionFilter').value;
 
   filteredData = rawData.filter(item => {
     return (
-      (leagueVal === '' || item.League === leagueVal) &&
+      (stashVal === '' || item.Stash === stashVal) &&
       (accountVal === '' || item.Account === accountVal) &&
       (actionVal === '' || item.Action === actionVal)
     );
